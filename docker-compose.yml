@@ -7,11 +7,13 @@ services:
     ports:
       - 27017:27017
   ms-config-server:
+    container_name: ms-config-server
     build:
       context: ../ms-config-server/ms-config-server
     ports:
       - 8888:8888
   ms-discovery:
+    container_name: ms-discovery
     build:
       context: ../ms-discovery
     ports:
@@ -19,6 +21,7 @@ services:
     depends_on:
       - ms-config-server
   ms-gateway:
+    container_name: ms-gateway
     build:
       context: ../ms-gateway
     ports:
@@ -27,6 +30,7 @@ services:
       - ms-discovery
       - ms-config-server
   ms-client:
+    container_name: ms-client
     build:
       context: ../ms-client
     ports:
@@ -38,6 +42,7 @@ services:
       - ms-config-server
       - ms-discovery
   ms-bank-account:
+    container_name: ms-bank-account
     build:
       context: ../ms-bank-account
     ports:
@@ -49,6 +54,7 @@ services:
       - ms-config-server
       - ms-discovery
   ms-credits:
+    container_name: ms-credits
     build:
       context: ../ms-credits
     ports:
@@ -60,6 +66,7 @@ services:
       - ms-config-server
       - ms-discovery
   ms-loan:
+    container_name: ms-loan
     build:
       context: ../ms-loan
     ports:
@@ -71,6 +78,7 @@ services:
       - ms-config-server
       - ms-discovery
   ms-movement:
+    container_name: ms-movement
     build:
       context: ../ms-movement
     ports:
