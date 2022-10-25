@@ -26,6 +26,8 @@ services:
       context: ../ms-gateway
     ports:
       - 9090:9090
+    links:
+      - ms-config-server
     depends_on:
       - ms-discovery
       - ms-config-server
@@ -37,6 +39,8 @@ services:
       - 8080:8080
     links:
       - mongodb
+      - ms-config-server
+      - ms-discovery
     depends_on:
       - mongodb
       - ms-config-server
@@ -49,18 +53,22 @@ services:
       - 8085:8085
     links:
       - mongodb
+      - ms-config-server
+      - ms-discovery
     depends_on:
       - mongodb
       - ms-config-server
       - ms-discovery
-  ms-credits:
-    container_name: ms-credits
+  ms-credit:
+    container_name: ms-credit
     build:
       context: ../ms-credits
     ports:
       - 8084:8084
     links:
       - mongodb
+      - ms-config-server
+      - ms-discovery
     depends_on:
       - mongodb
       - ms-config-server
@@ -73,6 +81,8 @@ services:
       - 8081:8081
     links:
       - mongodb
+      - ms-config-server
+      - ms-discovery
     depends_on:
       - mongodb
       - ms-config-server
@@ -85,6 +95,8 @@ services:
       - 8083:8083
     links:
       - mongodb
+      - ms-config-server
+      - ms-discovery
     depends_on:
       - mongodb
       - ms-config-server
