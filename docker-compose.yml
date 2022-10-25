@@ -1,0 +1,75 @@
+version: "3.7"
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+  ms-discovery:
+    build:
+      context: ../ms-discovery/target
+    ports:
+      - 9093:9093
+  ms-gateway:
+    build:
+      context: ../ms-gateway/target
+    ports:
+      - 9090:9090
+    depends_on:
+      - ms-discovery
+  ms-config-server:
+    build:
+      context: ../ms-config-server/target
+    ports:
+      - 8888:8888
+    depends_on:
+      - ms-discovery
+  ms-client:
+    build:
+      context: ../ms-client/target
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - ms-discovery
+  ms-bank-account:
+    build:
+      context: ../ms-bank-account/target
+    ports:
+      - 8085:8085
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - ms-discovery
+  ms-credits:
+    build:
+      context: ../ms-credits/target
+    ports:
+      - 8084:8084
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - ms-discovery
+  ms-loan:
+    build:
+      context: ../ms-loan/target
+    ports:
+      - 8081:8081
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - ms-discovery
+  ms-movement:
+    build:
+      context: ../ms-movement/target
+    ports:
+      - 8083:8083
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+      - ms-discovery
