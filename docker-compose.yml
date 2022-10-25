@@ -18,7 +18,7 @@ services:
       - ms-discovery
   ms-config-server:
     build:
-      context: ../ms-config-server/target
+      context: ../ms-config-server/ms-config-server/target
     ports:
       - 8888:8888
     depends_on:
