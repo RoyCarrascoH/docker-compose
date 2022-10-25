@@ -2,20 +2,21 @@ version: "3.7"
 services:
   mongodb:
     image: mongo
+    expose:
+      - 27017
     ports:
       - 27017:27017
-  ms-discovery:
-    build:
-      context: ../ms-discovery
-    ports:
-      - 9093:9093
   ms-config-server:
     build:
       context: ../ms-config-server/ms-config-server
     ports:
       - 8888:8888
-    depends_on:
-      - ms-discovery
+  ms-discovery:
+    build:
+      context: ../ms-discovery
+    ports:
+      - 9093:9093
+      - ms-config-server
   ms-gateway:
     build:
       context: ../ms-gateway
