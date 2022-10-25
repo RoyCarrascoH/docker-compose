@@ -9,13 +9,6 @@ services:
       context: ../ms-discovery
     ports:
       - 9093:9093
-  ms-gateway:
-    build:
-      context: ../ms-gateway
-    ports:
-      - 9090:9090
-    depends_on:
-      - ms-discovery
   ms-config-server:
     build:
       context: ../ms-config-server/ms-config-server
@@ -23,6 +16,14 @@ services:
       - 8888:8888
     depends_on:
       - ms-discovery
+  ms-gateway:
+    build:
+      context: ../ms-gateway
+    ports:
+      - 9090:9090
+    depends_on:
+      - ms-discovery
+      - ms-config-server
   ms-client:
     build:
       context: ../ms-client
@@ -32,6 +33,7 @@ services:
       - mongodb
     depends_on:
       - mongodb
+      - ms-config-server
       - ms-discovery
   ms-bank-account:
     build:
@@ -42,6 +44,7 @@ services:
       - mongodb
     depends_on:
       - mongodb
+      - ms-config-server
       - ms-discovery
   ms-credits:
     build:
@@ -52,6 +55,7 @@ services:
       - mongodb
     depends_on:
       - mongodb
+      - ms-config-server
       - ms-discovery
   ms-loan:
     build:
@@ -62,6 +66,7 @@ services:
       - mongodb
     depends_on:
       - mongodb
+      - ms-config-server
       - ms-discovery
   ms-movement:
     build:
@@ -72,4 +77,5 @@ services:
       - mongodb
     depends_on:
       - mongodb
+      - ms-config-server
       - ms-discovery
