@@ -6,26 +6,26 @@ services:
       - 27017:27017
   ms-discovery:
     build:
-      context: ../ms-discovery/target
+      context: ../ms-discovery
     ports:
       - 9093:9093
   ms-gateway:
     build:
-      context: ../ms-gateway/target
+      context: ../ms-gateway
     ports:
       - 9090:9090
     depends_on:
       - ms-discovery
   ms-config-server:
     build:
-      context: ../ms-config-server/ms-config-server/target
+      context: ../ms-config-server/ms-config-server
     ports:
       - 8888:8888
     depends_on:
       - ms-discovery
   ms-client:
     build:
-      context: ../ms-client/target
+      context: ../ms-client
     ports:
       - 8080:8080
     links:
@@ -35,7 +35,7 @@ services:
       - ms-discovery
   ms-bank-account:
     build:
-      context: ../ms-bank-account/target
+      context: ../ms-bank-account
     ports:
       - 8085:8085
     links:
@@ -45,7 +45,7 @@ services:
       - ms-discovery
   ms-credits:
     build:
-      context: ../ms-credits/target
+      context: ../ms-credits
     ports:
       - 8084:8084
     links:
@@ -55,7 +55,7 @@ services:
       - ms-discovery
   ms-loan:
     build:
-      context: ../ms-loan/target
+      context: ../ms-loan
     ports:
       - 8081:8081
     links:
@@ -65,7 +65,7 @@ services:
       - ms-discovery
   ms-movement:
     build:
-      context: ../ms-movement/target
+      context: ../ms-movement
     ports:
       - 8083:8083
     links:
