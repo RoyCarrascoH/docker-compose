@@ -16,6 +16,7 @@ services:
       context: ../ms-discovery
     ports:
       - 9093:9093
+    depends_on:
       - ms-config-server
   ms-gateway:
     build:
