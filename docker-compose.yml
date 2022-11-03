@@ -101,7 +101,7 @@ services:
       context: ../ms-loan
     restart: always
     ports:
-      - 8081:8081
+      - 8092:8092
     links:
       - mongodb
       - ms-config-server
@@ -169,7 +169,7 @@ services:
       context: ../ms-account-type
     restart: always
     ports:
-      - 8088:8088
+      - 8091:8091
     links:
       - mongodb
       - ms-config-server
