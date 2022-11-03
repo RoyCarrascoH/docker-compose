@@ -12,7 +12,7 @@ services:
   ms-config-server:
     container_name: ms-config-server
     build:
-      context: ../ms-config-server/ms-config-server
+      context: ../ms-config-server
     mem_limit: 512m
     restart: always
     ports:
